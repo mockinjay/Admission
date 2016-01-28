@@ -24,8 +24,23 @@ namespace PresentationLayer.WebForms
             //entity.IsAgreeToTermsChecked = true;
 
             // Show the message area
-            //divMessageArea.Visible = true;
-
+            //
+            if(txtPassword.Text.ToString().Equals(txtConfirmPassword.Text.ToString())==false)
+            {
+                divMessageArea.Visible = true;
+                lblMessage.Text = "Va rugam sa reconfirmati parola.";
+                txtConfirmPassword.Text = string.Empty;
+            }
+            else if(txtCNP.Text.Length!=13 || txtCNP.Text.Any(x => char.IsLetter(x)))
+            {
+                divMessageArea.Visible = true;
+                lblMessage.Text = "CNP-ul nu este valid.";
+            }
+            else
+            {
+                divMessageArea.Visible = true;
+                lblMessage.Text = "Inregistrarea s-a efectuat cu succes.";
+            }
             System.Diagnostics.Debugger.Break();
         }
     }

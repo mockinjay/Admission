@@ -10,7 +10,7 @@
         </div>
         <div class="panel-body">
           <div class="form-group">
-            <label for="txtLoginEmail">E-mail</label>
+            <label for="LoginEmail">E-mail</label>
             <div class="input-group">
               <asp:TextBox ID="txtLoginEmail" runat="server"
                 TextMode="Email"
@@ -68,6 +68,7 @@
           </div>
         </div>
         <div class="panel-footer">
+            
           <asp:Button ID="btnSignIn" runat="server"
             Text="Sign In"
             CssClass="btn btn-primary"
