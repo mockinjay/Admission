@@ -11,20 +11,19 @@ namespace DataLayer
 {
     public class DataTier
     {
-        
-        private bool disposed;
         int currentUser;
         public DataTier()
         {
             
-            currentUser = 0;
+            currentUser = 4;
         }
        
-        public IDbSet<Facultati> ReadFaculties()
+        public IEnumerable<Facultati> ReadFaculties()
         {
             using (var context = new AdmitereLicentaContext())
             {
-                var fac = context.Facultatis;
+                var fac = (from n in context.Facultatis
+                           select n).ToList<Facultati>();
                 return fac;
             }
                 
@@ -81,6 +80,14 @@ namespace DataLayer
                 }
                
 
+            }
+        }
+        public Candidati ReadUserDetails(string email)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = context.Candidatis.Where(n => n.Email == email && n.ID_Candidat==currentUser ).ToList<Candidati>().FirstOrDefault();
+                return query;
             }
         }
         public IEnumerable<Utilizatori> ReadPassword(string email)
@@ -175,6 +182,14 @@ namespace DataLayer
             }
                 
         }
+        public Optiuni ReadUserOption()
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = context.Optiunis.Where(n => n.ID_Candidat == currentUser).ToList<Optiuni>().FirstOrDefault();
+                return query;
+            }
+        }
         public bool DeleteUserOption(string specializare)
         {
             using (var context = new AdmitereLicentaContext())
@@ -246,7 +261,7 @@ namespace DataLayer
 
             }
         }
-        public bool DeleteUser(int _curr)
+        public bool DeleteUser()
         {
             using (var context = new AdmitereLicentaContext())
             {
@@ -254,7 +269,7 @@ namespace DataLayer
                 {
                     try
                     {
-                        var query = context.Candidatis.Where(n => n.ID_Candidat==_curr).ToList<Candidati>().FirstOrDefault();
+                        var query = context.Candidatis.Where(n => n.ID_Candidat==currentUser).ToList<Candidati>().FirstOrDefault();
                         if (query != null)
                         {
                             context.Candidatis.Remove(query);
@@ -320,6 +335,41 @@ namespace DataLayer
             }
             
            
+        }
+        public bool ChangePassword(string email, string oldPass, string newPass)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var query = (from n in context.Candidatis
+                                     join u in context.Utilizatoris
+                                     on n.ID_Candidat equals u.ID_Candidat
+                                     where n.Email == email && u.Parola == oldPass && n.ID_Candidat==currentUser
+                                     select u
+                            ).ToList<Utilizatori>().FirstOrDefault();
+                        if (query != null)
+                        {
+                            query.Parola = newPass;
+                            context.Utilizatoris.Add(query);
+                            context.Entry(query).State = System.Data.Entity.EntityState.Modified;
+                            context.SaveChanges();
+                            transaction.Commit();
+                            return true;
+                        }
+                        else
+                            return false;
+                        
+                    }
+                    catch(Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
     }
