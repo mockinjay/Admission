@@ -14,10 +14,17 @@ namespace DataLayer
         int currentUser;
         public DataTier()
         {
+<<<<<<< HEAD
             
             currentUser = 4;
         }
        
+=======
+
+            currentUser = 4;
+        }
+
+>>>>>>> origin/master
         public IEnumerable<Facultati> ReadFaculties()
         {
             using (var context = new AdmitereLicentaContext())
@@ -26,8 +33,8 @@ namespace DataLayer
                            select n).ToList<Facultati>();
                 return fac;
             }
-                
-            
+
+
         }
         public IEnumerable<Departament> ReadDepartments(int facultyId)
         {
@@ -45,7 +52,7 @@ namespace DataLayer
                 var specialization = context.Specializaris.Where(n => n.ID_Departament == departementId).ToList();
                 return specialization;
             }
-                
+
         }
 
         public string CheckUser(string email, string password)
@@ -78,8 +85,16 @@ namespace DataLayer
                         return "Corect";
                     }
                 }
-               
 
+
+            }
+        }
+        public Candidati ReadUserDetails(string email)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = context.Candidatis.Where(n => n.Email == email && n.ID_Candidat == currentUser).ToList<Candidati>().FirstOrDefault();
+                return query;
             }
         }
         public Candidati ReadUserDetails(string email)
@@ -92,20 +107,20 @@ namespace DataLayer
         }
         public IEnumerable<Utilizatori> ReadPassword(string email)
         {
-                using (var context = new AdmitereLicentaContext())
-                {
-                    var query = from n in context.Candidatis
-                                join u in context.Utilizatoris
-                                 on n.ID_Candidat equals u.ID_Candidat
-                                where n.Email == email
-                                select u;
-                    return query.ToList();
-                }         
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = from n in context.Candidatis
+                            join u in context.Utilizatoris
+                             on n.ID_Candidat equals u.ID_Candidat
+                            where n.Email == email
+                            select u;
+                return query.ToList();
+            }
         }
 
         public IEnumerable<Beneficiari> ReadAllBeneficiari()
         {
-            using (var context=new AdmitereLicentaContext())
+            using (var context = new AdmitereLicentaContext())
             {
                 var query = context.Beneficiaris;
                 return query.ToList();
@@ -124,12 +139,12 @@ namespace DataLayer
         {
             using (var context = new AdmitereLicentaContext())
             {
-                var query = context.Locuri_taxa.Where(n => n.ID_Specializare == specialization).ToList() ;
+                var query = context.Locuri_taxa.Where(n => n.ID_Specializare == specialization).ToList();
                 return query;
             }
         }
 
-        public string AddUserOption(string specializare,int prioritate, string isTaxa )
+        public string AddUserOption(string specializare, int prioritate, string isTaxa)
         {
             using (var context = new AdmitereLicentaContext())
             {
@@ -137,28 +152,28 @@ namespace DataLayer
                 {
                     try
                     {
-                        
+
                         var q = (from c in context.Specializaris
                                  where c.Nume_specializare == specializare
                                  select c.ID_Specializare).FirstOrDefault();
-                        if (q==null || q==0)
+                        if (q == null || q == 0)
                         {
                             return "NoSpecialization";
                         }
                         var query = context.Optiunis;
-                        foreach(var temp in query)
+                        foreach (var temp in query)
                         {
-                            if (temp.ID_Specializare==q)
+                            if (temp.ID_Specializare == q)
                             {
                                 return "SpecializationExist";
                             }
-                            if (temp.Prioritate==prioritate)
+                            if (temp.Prioritate == prioritate)
                             {
                                 return "ThisPriorityExists";
-                            }  
+                            }
 
                         }
-                        
+
                         //var query = context.Specializaris.Where(n => n.Nume_specializare == specializare).First();
 
                         var option = new Optiuni();
@@ -172,15 +187,23 @@ namespace DataLayer
                         transaction.Commit();
                         return "TransactionCorect";
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         transaction.Rollback();
                         return "TransactionFailed";
                     }
-                    
+
                 }
             }
-                
+
+        }
+        public Optiuni ReadUserOption()
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = context.Optiunis.Where(n => n.ID_Candidat == currentUser).ToList<Optiuni>().FirstOrDefault();
+                return query;
+            }
         }
         public Optiuni ReadUserOption()
         {
@@ -199,10 +222,10 @@ namespace DataLayer
                     try
                     {
                         var query = (from n in context.Specializaris
-                                    join u in context.Optiunis
-                                     on n.ID_Specializare equals u.ID_Specializare
-                                    where n.Nume_specializare==specializare
-                                    select u).ToList<Optiuni>().FirstOrDefault();
+                                     join u in context.Optiunis
+                                      on n.ID_Specializare equals u.ID_Specializare
+                                     where n.Nume_specializare == specializare
+                                     select u).ToList<Optiuni>().FirstOrDefault();
                         if (query != null)
                         {
                             context.Optiunis.Remove(query);
@@ -214,7 +237,7 @@ namespace DataLayer
                         else
                             return false;
 
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -222,7 +245,7 @@ namespace DataLayer
                         return false;
                     }
                 }
-                
+
             }
         }
 
@@ -269,7 +292,11 @@ namespace DataLayer
                 {
                     try
                     {
+<<<<<<< HEAD
                         var query = context.Candidatis.Where(n => n.ID_Candidat==currentUser).ToList<Candidati>().FirstOrDefault();
+=======
+                        var query = context.Candidatis.Where(n => n.ID_Candidat == currentUser).ToList<Candidati>().FirstOrDefault();
+>>>>>>> origin/master
                         if (query != null)
                         {
                             context.Candidatis.Remove(query);
@@ -280,9 +307,9 @@ namespace DataLayer
                         }
                         else
                             return false;
-                        
+
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         transaction.Rollback();
                         return false;
@@ -325,8 +352,12 @@ namespace DataLayer
                         context.Entry(newUser).State = System.Data.Entity.EntityState.Added;
                         context.SaveChanges();
                         transaction.Commit();
+<<<<<<< HEAD
                         return "";
                         
+=======
+
+>>>>>>> origin/master
                     }
                     catch (Exception ex)
                     {
@@ -336,8 +367,8 @@ namespace DataLayer
 
                 }
             }
-            
-           
+
+
         }
         public bool ChangePassword(string email, string oldPass, string newPass)
         {
@@ -350,7 +381,11 @@ namespace DataLayer
                         var query = (from n in context.Candidatis
                                      join u in context.Utilizatoris
                                      on n.ID_Candidat equals u.ID_Candidat
+<<<<<<< HEAD
                                      where n.Email == email && u.Parola == oldPass && n.ID_Candidat==currentUser
+=======
+                                     where n.Email == email && u.Parola == oldPass && n.ID_Candidat == currentUser
+>>>>>>> origin/master
                                      select u
                             ).ToList<Utilizatori>().FirstOrDefault();
                         if (query != null)
@@ -364,6 +399,7 @@ namespace DataLayer
                         }
                         else
                             return false;
+<<<<<<< HEAD
                         
                     }
                     catch(Exception ex)
@@ -374,7 +410,27 @@ namespace DataLayer
                 }
             }
         }
+=======
+>>>>>>> origin/master
 
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+        public IEnumerable<Olimpici> ReadAllOlimpici()
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = context.Olimpicis;
+                return query.ToList();
+            }
+        }
     }
 
 }
+
