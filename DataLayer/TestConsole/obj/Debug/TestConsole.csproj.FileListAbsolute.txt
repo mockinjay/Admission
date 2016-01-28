@@ -1,0 +1,12 @@
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\TestConsole.exe.config
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\TestConsole.exe
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\TestConsole.pdb
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\DataLayer.dll
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\EntityFramework.dll
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\DataLayer.pdb
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\EntityFramework.xml
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\TestConsole\obj\Debug\TestConsole.csprojResolveAssemblyReference.cache
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\TestConsole\obj\Debug\TestConsole.exe
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\TestConsole\obj\Debug\TestConsole.pdb
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\EntityFramework.SqlServer.xml
