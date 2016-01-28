@@ -22,8 +22,10 @@ namespace PresentationLayer.WebForms
             //entity.IsRememberMeChecked = chkRememberMe.Checked;
 
             // Show the message area
-            divMessageArea.Visible = true;
-
+            //divMessageArea.Visible = true;
+            // lblMessage.Text = "V-ati logat cu succes.";
+            this.Server.Transfer("MemberProfileForm.aspx");
+           // Response.Redirect("MemberProfileForm.aspx");
             System.Diagnostics.Debugger.Break();
         }
     }

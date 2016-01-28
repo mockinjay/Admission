@@ -10,16 +10,7 @@
 namespace PresentationLayer.WebForms {
     
     
-    public partial class SignUpForm {
-        
-        /// <summary>
-        /// TermsAndConditions1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::PresentationLayer.TermsAndConditions TermsAndConditions1;
+    public partial class MemberProfileForm {
         
         /// <summary>
         /// txtName control.
@@ -130,6 +121,33 @@ namespace PresentationLayer.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtNationality;
         
         /// <summary>
+        /// avatarUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile avatarUpload;
+        
+        /// <summary>
+        /// btnUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpload;
+        
+        /// <summary>
+        /// Avatar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Avatar;
+        
+        /// <summary>
         /// divMessageArea control.
         /// </summary>
         /// <remarks>
@@ -148,12 +166,33 @@ namespace PresentationLayer.WebForms {
         protected global::System.Web.UI.WebControls.Label lblMessage;
         
         /// <summary>
-        /// btnRegister control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegister;
+        protected global::System.Web.UI.WebControls.Button btnSave;
+        
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
+        
+        /// <summary>
+        /// PreviousPage property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new PresentationLayer.WebForms.LoginForm PreviousPage {
+            get {
+                return ((PresentationLayer.WebForms.LoginForm)(base.PreviousPage));
+            }
+        }
     }
 }

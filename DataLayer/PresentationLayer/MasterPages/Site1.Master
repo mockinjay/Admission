@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="PresentationLayer.MasterPages.Site" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="PresentationLayer.MasterPages.Site1" %>
 
 <!DOCTYPE html>
 
@@ -82,7 +82,7 @@
           <!-- The following creates the toggle navigation "button" -->
             <ul class="nav navbar-nav ">
 
-            <li><a href="../WebForms/Home.aspx" class="pull-left visible-xs"  ><img src="../Images/logoatm1.png"  class=" img-responsive img-logo2" /></a></li> 
+            <li><a href="../WebForms/MemberProfileForm.aspx" class="pull-left visible-xs"  ><img src="../Images/logoatm1.png"  class=" img-responsive img-logo2" /></a></li> 
           <li><button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
             <!-- 'sr-only' is for screen readers only -->
             <span class="sr-only">Toggle navigation</span>
@@ -95,24 +95,48 @@
         <!-- NOTE: The following collapses at 940px or less, if you have too many items, this area could break onto two lines -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
           <ul class="nav navbar-nav ">
-              <li><a href="../WebForms/Home.aspx"><img src="../Images/logoatm1.png" class="visible-lg img-responsive img-logo" /></a></li>
-            <li><a href="../WebForms/Home.aspx"><img src="../Images/logoatm1.png" class="visible-md img-responsive img-logo" /></a></li>
-              <li><a href="../WebForms/Home.aspx" ><img src="../Images/logoatm.png" class="visible-sm img-responsive img-logo" /></a></li>
+              <li><a href="../WebForms/MemberProfileForm.aspx"><img src="../Images/logoatm1.png" class="visible-lg img-responsive img-logo" /></a></li>
+            <li><a href="../WebForms/MemberProfileForm.aspx"><img src="../Images/logoatm1.png" class="visible-md img-responsive img-logo" /></a></li>
+              <li><a href="../WebForms/MemberProfileForm.aspx" ><img src="../Images/logoatm.png" class="visible-sm img-responsive img-logo" /></a></li>
              
-             
-            <li >
-              <a href="../WebForms/LoginForm.aspx" class="modify-position">Login</a>
-            </li>
+             <!--<li >
+              <a href="../WebForms/MemberProfileForm.aspx" class="modify-position">Profilul tau</a>
+               </li> -->
+           
               <li >
-              <a href="../WebForms/SignUpForm.aspx" class="modify-position">Inregistrare</a>
-              </li>
-           <li >
-              <a href="../WebForms/RecoverPasswordForm.aspx" class="modify-position">Recuperare parola</a>
+              <a href="../WebForms/AboutUsForm.aspx" class="modify-position">Despre Noi</a>
               
             </li>
-             
             
+           
           </ul>
+            <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#"
+              class="dropdown-toggle"
+              data-toggle="dropdown">
+               <!--
+              <img  src="../Images/male.png" alt="Me"
+                class="avatar" /> -->
+                <asp:Image ID="imgChange" runat="server" 
+                    ImageUrl="../Images/male.png"
+                    CssClass="avatar"
+                    />
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="../WebForms/MemberProfileForm.aspx">Profilul meu</a>
+              </li>
+              <li>
+                <a href="#">Schimba parola</a>
+              </li>
+              <li>
+                <a href="../WebForms/Home.aspx">Logout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
         </div>
       </div>
     </nav>

@@ -298,7 +298,7 @@ namespace DataLayer
                 return query;
             }
         }
-        public void CreateUser(Dictionary<string, string> user)
+        public string CreateUser(Dictionary<string, string> user)
         {
             using (var context = new AdmitereLicentaContext())
             {
@@ -306,6 +306,8 @@ namespace DataLayer
                 {
                     try
                     {
+                        var query = context.Candidatis;
+
                         var newUser = new Candidati();
                         newUser.Nume = user["nume"];
                         newUser.Prenume = user["prenume"];
@@ -315,7 +317,6 @@ namespace DataLayer
                         newUser.Oras = user["oras"];
                         newUser.Judet = user["judet"];
                         newUser.Nr_telefon = Convert.ToDecimal(user["telefon"]);
-                        newUser.Tara = user["tara"];
                         newUser.Nationalitate = user["nationalitate"];
                         newUser.Religie = user["religie"];
                         newUser.Email = user["email"];
@@ -324,11 +325,13 @@ namespace DataLayer
                         context.Entry(newUser).State = System.Data.Entity.EntityState.Added;
                         context.SaveChanges();
                         transaction.Commit();
+                        return "";
                         
                     }
                     catch (Exception ex)
                     {
                         transaction.Rollback();
+                        return "";
                     }
 
                 }

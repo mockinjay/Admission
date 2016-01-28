@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\male.png" />
     <Content Include="packages.config" />
     <Content Include="css\bootstrap-theme.css.map" />
     <Content Include="css\bootstrap.css.map" />
@@ -73,6 +74,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="MasterPages\Site.Master" />
+    <Content Include="MasterPages\Site1.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -102,7 +104,9 @@
     <Content Include="css\smoothness\jquery-ui-1.10.4.custom.css" />
     <Content Include="css\smoothness\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="css\Styles.css" />
-    <Content Include="Default.aspx" />
+    <Content Include="UserControls\AboutUs.ascx" />
+    <Content Include="WebForms\AboutUsForm.aspx" />
+    <Content Include="WebForms\Home.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\Envelope.png" />
@@ -116,16 +120,32 @@
     <Content Include="UserControls\TermsAndConditions.ascx" />
     <Content Include="Web.config" />
     <Content Include="WebForms\LoginForm.aspx" />
+    <Content Include="WebForms\MemberProfileForm.aspx" />
+    <Content Include="WebForms\RecoverPasswordForm.aspx" />
     <Content Include="WebForms\SignUpForm.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\WebListHelper.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="UserControls\AboutUs.ascx.cs">
+      <DependentUpon>AboutUs.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="UserControls\AboutUs.ascx.designer.cs">
+      <DependentUpon>AboutUs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\AboutUsForm.aspx.cs">
+      <DependentUpon>AboutUsForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\AboutUsForm.aspx.designer.cs">
+      <DependentUpon>AboutUsForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -136,6 +156,13 @@
     </Compile>
     <Compile Include="MasterPages\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\TermsAndConditions.ascx.cs">
@@ -151,6 +178,20 @@
     </Compile>
     <Compile Include="WebForms\LoginForm.aspx.designer.cs">
       <DependentUpon>LoginForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\MemberProfileForm.aspx.cs">
+      <DependentUpon>MemberProfileForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\MemberProfileForm.aspx.designer.cs">
+      <DependentUpon>MemberProfileForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\RecoverPasswordForm.aspx.cs">
+      <DependentUpon>RecoverPasswordForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\RecoverPasswordForm.aspx.designer.cs">
+      <DependentUpon>RecoverPasswordForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\SignUpForm.aspx.cs">
       <DependentUpon>SignUpForm.aspx</DependentUpon>

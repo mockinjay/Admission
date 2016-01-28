@@ -1,60 +1,32 @@
-﻿<%@ Page Title="Inregistrare" Language="C#" MasterPageFile="~/MasterPages/Site.Master" AutoEventWireup="true" CodeBehind="SignUpForm.aspx.cs" Inherits="PresentationLayer.WebForms.SignUpForm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Site1.Master" AutoEventWireup="true" CodeBehind="MemberProfileForm.aspx.cs" Inherits="PresentationLayer.WebForms.MemberProfileForm" %>
 
-<%@ Register Src="../UserControls/TermsAndConditions.ascx" TagName="TermsAndConditions" TagPrefix="uc1" %>
+<%@ PreviousPageType VirtualPath="LoginForm.aspx" %> 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-  <script>
-    function acceptTerms() {
-      if (!($("#chkAgreeToTerms").prop('checked'))) {
-        $("#chkAgreeToTerms").prop("checked", true);
-      }
-      $("#btnRegister").removeProp("disabled");
-      $('#termsDialog').modal('hide');
-    }
+    <script type="text/javascript">
+        function previewFile() {
+            var preview = document.querySelector('#<%=Avatar.ClientID %>');
+            var file = document.querySelector('#<%=avatarUpload.ClientID %>').files[0];
+            var reader = new FileReader();
 
-    function termsChecked() {
-      if ($("#chkAgreeToTerms").prop('checked'))
-        $("#btnRegister").removeProp("disabled");
-      else
-        $("#btnRegister").prop("disabled", "disabled");
-    }
-  </script>
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-  <div class="row">
-    <div class="col-xs-12 col-md-6 center-block">
-      <div class="modal fade"
-           id="termsDialog" 
-           role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" 
-                      class="close" 
-                      data-dismiss="modal">&times;</button>
-              <h4 class="modal-title" id="termsLabel">Termeni si Conditii</h4>
-            </div>
-            <div class="modal-body">
-              <uc1:TermsAndConditions ID="TermsAndConditions1" runat="server" />
-            </div>
-            <div class="modal-footer">
-              <button type="button"
-                      class="btn btn-default"
-                      data-dismiss="modal">Nu accept</button>
-              <button type="button" 
-                      class="btn btn-primary"
-                      onclick="acceptTerms();">Accept Termenii</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
+    <div class="row">
     <div class="col-xs-12 col-md-6 center-block">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Inregistrare</h3>
+          <h3 class="panel-title">Profilul tau</h3>
         </div>
         <div class="panel-body">
           <div class="form-group">
@@ -207,17 +179,19 @@
                    </div>
               </div>
             </div>
-          <div class="form-group">
-            <!-- NOTE: Include columns here to give some margin to the Check box -->
-            <div class="col-xs-12">
-              <div class="checkbox">
-                <label>
-                  <input id="chkAgreeToTerms" type="checkbox" onchange="termsChecked();" />
-                  Sunt de acord cu <a href="#" data-toggle="modal" data-target="#termsDialog">Termenii si conditiile site-ului.</a>
-                </label>
-              </div>
-            </div>
-          </div>
+            <div class="form-group">
+            <label for="txtSex">Avatar</label>
+              <div class="row">
+              <div class="col-xs-12 col-sm-8">
+                <div class="input-group">
+          <input ID="avatarUpload" type="file" name="file" onchange="previewFile()"  runat="server" />
+           
+            <asp:Button ID="btnUpload" runat="server" CssClass="btn btn-primary" Text="Upload" OnClick="Upload" />
+            <asp:Image ID="Avatar" runat="server" Height="150px" ImageUrl="../Images/male.png" Width="150px" />
+                    </div>
+                  </div>
+                  </div>
+                </div>
           <div class="row">
             <div class="col-xs-12">
               <div id="divMessageArea" 
@@ -231,16 +205,25 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="panel-footer">
-          <asp:Button ID="btnRegister" runat="server"
-            Enabled="false"
-            Text="Register"
-            CssClass="btn btn-primary"
-            title="Register"
-            OnClick="btnRegister_Click" />
+             </div>
+           <div class="panel-footer">
+          <div class="row">
+            <div class="col-xs-12">
+              <asp:Button ID="btnSave" runat="server"
+                Text="Save"
+                CssClass="btn btn-primary"
+                OnClick="btnSave_Click" />
+              <asp:Button ID="btnCancel" runat="server"
+                Text="Cancel"
+                CssClass="btn btn-primary"
+                formnovalidate="formnovalidate"
+                OnClick="btnCancel_Click" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="EndOfPageContent" runat="server">
 </asp:Content>
