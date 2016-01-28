@@ -20,7 +20,7 @@ namespace DataLayer
             currentUser = 0;
         }
        
-        public IDbSet<Facultati> readFaculties()
+        public IDbSet<Facultati> ReadFaculties()
         {
             using (var context = new AdmitereLicentaContext())
             {
@@ -30,7 +30,7 @@ namespace DataLayer
                 
             
         }
-        public IEnumerable<Departament> readDepartments(int facultyId)
+        public IEnumerable<Departament> ReadDepartments(int facultyId)
         {
             using (var context = new AdmitereLicentaContext())
             {
@@ -39,7 +39,7 @@ namespace DataLayer
             }
         }
 
-        public IEnumerable<Specializari> readSpecialization(int departementId)
+        public IEnumerable<Specializari> ReadSpecialization(int departementId)
         {
             using (var context = new AdmitereLicentaContext())
             {
@@ -49,7 +49,7 @@ namespace DataLayer
                 
         }
 
-        public string checkUser(string email, string password)
+        public string CheckUser(string email, string password)
         {
             using (var context = new AdmitereLicentaContext())
             {
@@ -83,7 +83,7 @@ namespace DataLayer
 
             }
         }
-        public IEnumerable<Utilizatori> getPassword(string email)
+        public IEnumerable<Utilizatori> ReadPassword(string email)
         {
                 using (var context = new AdmitereLicentaContext())
                 {
@@ -96,7 +96,7 @@ namespace DataLayer
                 }         
         }
 
-        public IEnumerable<Beneficiari> readAllBeneficiari()
+        public IEnumerable<Beneficiari> ReadAllBeneficiari()
         {
             using (var context=new AdmitereLicentaContext())
             {
@@ -104,7 +104,7 @@ namespace DataLayer
                 return query.ToList();
             }
         }
-        public IEnumerable<Locuri_buget> readLocuriBuget(int specializationID, int beneficiarID)
+        public IEnumerable<Locuri_buget> ReadLocuriBuget(int specializationID, int beneficiarID)
         {
             using (var context = new AdmitereLicentaContext())
             {
@@ -113,7 +113,7 @@ namespace DataLayer
             }
         }
 
-        public IEnumerable<Locuri_taxa> readLocuriTaxa(int specialization)
+        public IEnumerable<Locuri_taxa> ReadLocuriTaxa(int specialization)
         {
             using (var context = new AdmitereLicentaContext())
             {
@@ -175,7 +175,107 @@ namespace DataLayer
             }
                 
         }
-        public IEnumerable<Optiuni> getUserOptionOrderedByPriority()
+        public bool DeleteUserOption(string specializare)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var query = (from n in context.Specializaris
+                                    join u in context.Optiunis
+                                     on n.ID_Specializare equals u.ID_Specializare
+                                    where n.Nume_specializare==specializare
+                                    select u).ToList<Optiuni>().FirstOrDefault();
+                        if (query != null)
+                        {
+                            context.Optiunis.Remove(query);
+                            context.Entry(query).State = System.Data.Entity.EntityState.Deleted;
+                            context.SaveChanges();
+                            transaction.Commit();
+                            return true;
+                        }
+                        else
+                            return false;
+
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+                
+            }
+        }
+
+        public bool DeleteUserOption(int specID)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var query = (from n in context.Specializaris
+                                     join u in context.Optiunis
+                                      on n.ID_Specializare equals u.ID_Specializare
+                                     where n.ID_Specializare == specID
+                                     select u).ToList<Optiuni>().FirstOrDefault();
+                        if (query != null)
+                        {
+                            context.Optiunis.Remove(query);
+                            context.Entry(query).State = System.Data.Entity.EntityState.Deleted;
+                            context.SaveChanges();
+                            transaction.Commit();
+                            return true;
+                        }
+                        else
+                            return false;
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+
+            }
+        }
+        public bool DeleteUser(int _curr)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var query = context.Candidatis.Where(n => n.ID_Candidat==_curr).ToList<Candidati>().FirstOrDefault();
+                        if (query != null)
+                        {
+                            context.Candidatis.Remove(query);
+                            context.Entry(query).State = System.Data.Entity.EntityState.Deleted;
+                            context.SaveChanges();
+                            transaction.Commit();
+                            return true;
+                        }
+                        else
+                            return false;
+                        
+                    }
+                    catch(Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+        public IEnumerable<Optiuni> GetUserOptionOrderedByPriority()
         {
             using (var context = new AdmitereLicentaContext())
             {
@@ -183,7 +283,7 @@ namespace DataLayer
                 return query;
             }
         }
-        public void createUser(Dictionary<string, string> user)
+        public void CreateUser(Dictionary<string, string> user)
         {
             using (var context = new AdmitereLicentaContext())
             {
