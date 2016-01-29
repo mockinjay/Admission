@@ -430,12 +430,27 @@ namespace DataLayer
                 }
             }
         }
-        public IEnumerable<Olimpici> ReadAllOlimpici()
+        public IEnumerable<Candidati>ReadAllOlimpici()
         {
             using (var context = new AdmitereLicentaContext())
             {
-                var query = context.Olimpicis;
-                return query.ToList();
+                var query = from n in context.Candidatis
+                            join u in context.Olimpicis
+                            on n.ID_Candidat equals u.ID_Candidat
+                            select n;
+                return query.ToList<Candidati>();
+            }
+        }
+        public IEnumerable<Rezultate_probe> ReadRezultate(int proba)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = from u in context.Rezultate_probe
+                            where u.ID_Proba == proba
+                            select u;
+
+                query.OrderBy(n => n.ID_Proba).ThenByDescending(n => n.Nota).ToList();
+                return query.ToList<Rezultate_probe>();
             }
         }
     }
