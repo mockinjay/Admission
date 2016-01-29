@@ -14,17 +14,11 @@ namespace DataLayer
         int currentUser;
         public DataTier()
         {
-<<<<<<< HEAD
-            
-            currentUser = 4;
-        }
-       
-=======
 
             currentUser = 4;
         }
 
->>>>>>> origin/master
+
         public IEnumerable<Facultati> ReadFaculties()
         {
             using (var context = new AdmitereLicentaContext())
@@ -97,14 +91,7 @@ namespace DataLayer
                 return query;
             }
         }
-        public Candidati ReadUserDetails(string email)
-        {
-            using (var context = new AdmitereLicentaContext())
-            {
-                var query = context.Candidatis.Where(n => n.Email == email && n.ID_Candidat==currentUser ).ToList<Candidati>().FirstOrDefault();
-                return query;
-            }
-        }
+
         public IEnumerable<Utilizatori> ReadPassword(string email)
         {
             using (var context = new AdmitereLicentaContext())
@@ -156,7 +143,7 @@ namespace DataLayer
                         var q = (from c in context.Specializaris
                                  where c.Nume_specializare == specializare
                                  select c.ID_Specializare).FirstOrDefault();
-                        if (q == null || q == 0)
+                        if ( q == 0)
                         {
                             return "NoSpecialization";
                         }
@@ -197,22 +184,15 @@ namespace DataLayer
             }
 
         }
-        public Optiuni ReadUserOption()
+        public IEnumerable<Optiuni> ReadUserOption()
         {
             using (var context = new AdmitereLicentaContext())
             {
-                var query = context.Optiunis.Where(n => n.ID_Candidat == currentUser).ToList<Optiuni>().FirstOrDefault();
+                var query = context.Optiunis.Where(n => n.ID_Candidat == currentUser).ToList<Optiuni>();
                 return query;
             }
         }
-        public Optiuni ReadUserOption()
-        {
-            using (var context = new AdmitereLicentaContext())
-            {
-                var query = context.Optiunis.Where(n => n.ID_Candidat == currentUser).ToList<Optiuni>().FirstOrDefault();
-                return query;
-            }
-        }
+        
         public bool DeleteUserOption(string specializare)
         {
             using (var context = new AdmitereLicentaContext())
@@ -247,6 +227,46 @@ namespace DataLayer
                 }
 
             }
+        }
+        public bool UpdateUserOption(int priority, string specialization)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var query = (from n in context.Candidatis
+                                     join u in context.Optiunis
+                                     on n.ID_Candidat equals u.ID_Candidat
+                                     join x in context.Specializaris
+                                     on u.ID_Specializare equals x.ID_Specializare
+                                     where n.ID_Candidat == currentUser && x.Nume_specializare == specialization
+                                     select u).ToList<Optiuni>().FirstOrDefault();
+                        if (query != null)
+                        {
+                            query.Prioritate = Convert.ToDecimal(priority);
+                            context.Optiunis.Add(query);
+                            context.Entry(query).State = System.Data.Entity.EntityState.Modified;
+                            context.SaveChanges();
+                            transaction.Commit();
+                            return true;
+                        }
+                        else
+                            return false;
+                    }
+                    catch(Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+        
+        public void LogOut()
+        {
+            currentUser = 0;
         }
 
         public bool DeleteUserOption(int specID)
@@ -292,11 +312,9 @@ namespace DataLayer
                 {
                     try
                     {
-<<<<<<< HEAD
-                        var query = context.Candidatis.Where(n => n.ID_Candidat==currentUser).ToList<Candidati>().FirstOrDefault();
-=======
                         var query = context.Candidatis.Where(n => n.ID_Candidat == currentUser).ToList<Candidati>().FirstOrDefault();
->>>>>>> origin/master
+
+
                         if (query != null)
                         {
                             context.Candidatis.Remove(query);
@@ -333,36 +351,39 @@ namespace DataLayer
                 {
                     try
                     {
-                        var query = context.Candidatis;
+                        var query = context.Candidatis.Where(n => n.CNP == Convert.ToDecimal(user["cnp"])).FirstOrDefault();
+                        if (query == null)
+                        {
+                            var newUser = new Candidati();
+                            newUser.Nume = user["nume"];
+                            newUser.Prenume = user["prenume"];
+                            newUser.CNP = Convert.ToDecimal(user["cnp"]);
+                            newUser.Sex = user["sex"];
+                            newUser.Adresa = user["adresa"];
+                            newUser.Oras = user["oras"];
+                            newUser.Judet = user["judet"];
+                            newUser.Nr_telefon = Convert.ToDecimal(user["telefon"]);
+                            newUser.Nationalitate = user["nationalitate"];
+                            newUser.Religie = user["religie"];
+                            newUser.Email = user["email"];
+                            newUser.Nota_BAC = Convert.ToDecimal(user["bac"]);
+                            context.Candidatis.Add(newUser);
+                            context.Entry(newUser).State = System.Data.Entity.EntityState.Added;
+                            context.SaveChanges();
+                            transaction.Commit();
+                            return "SuccessAdded";
+                        }
+                        else
+                            return "UserExists";
 
-                        var newUser = new Candidati();
-                        newUser.Nume = user["nume"];
-                        newUser.Prenume = user["prenume"];
-                        newUser.CNP = Convert.ToDecimal(user["cnp"]);
-                        newUser.Sex = user["sex"];
-                        newUser.Adresa = user["adresa"];
-                        newUser.Oras = user["oras"];
-                        newUser.Judet = user["judet"];
-                        newUser.Nr_telefon = Convert.ToDecimal(user["telefon"]);
-                        newUser.Nationalitate = user["nationalitate"];
-                        newUser.Religie = user["religie"];
-                        newUser.Email = user["email"];
-                        newUser.Nota_BAC = Convert.ToDecimal(user["bac"]);
-                        context.Candidatis.Add(newUser);
-                        context.Entry(newUser).State = System.Data.Entity.EntityState.Added;
-                        context.SaveChanges();
-                        transaction.Commit();
-<<<<<<< HEAD
-                        return "";
                         
-=======
+                        
 
->>>>>>> origin/master
                     }
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        return "";
+                        return "TransactionFailed";
                     }
 
                 }
@@ -381,11 +402,10 @@ namespace DataLayer
                         var query = (from n in context.Candidatis
                                      join u in context.Utilizatoris
                                      on n.ID_Candidat equals u.ID_Candidat
-<<<<<<< HEAD
-                                     where n.Email == email && u.Parola == oldPass && n.ID_Candidat==currentUser
-=======
+
                                      where n.Email == email && u.Parola == oldPass && n.ID_Candidat == currentUser
->>>>>>> origin/master
+
+
                                      select u
                             ).ToList<Utilizatori>().FirstOrDefault();
                         if (query != null)
@@ -399,19 +419,7 @@ namespace DataLayer
                         }
                         else
                             return false;
-<<<<<<< HEAD
-                        
-                    }
-                    catch(Exception ex)
-                    {
-                        transaction.Rollback();
-                        return false;
-                    }
-                }
-            }
-        }
-=======
->>>>>>> origin/master
+
 
                     }
                     catch (Exception ex)
@@ -431,6 +439,5 @@ namespace DataLayer
             }
         }
     }
-
 }
 
