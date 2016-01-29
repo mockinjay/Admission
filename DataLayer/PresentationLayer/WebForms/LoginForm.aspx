@@ -10,49 +10,39 @@
         </div>
         <div class="panel-body">
           <div class="form-group">
-            <label for="LoginEmail">E-mail</label>
+            <label for="LoginEmail">Adresa de e-mail</label>
             <div class="input-group">
               <asp:TextBox ID="txtLoginEmail" runat="server"
                 TextMode="Email"
                 CssClass="form-control"
                 autofocus="autofocus"
                 required="required"
-                placeholder="Email"
-                title="Email"></asp:TextBox>
+                placeholder="E-mail"
+                title="E-mail"></asp:TextBox>
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-envelope"></i>
               </span>
             </div>
           </div>
           <div class="form-group">
-            <label for="txtLoginPassword">Password</label>
+            <label for="txtLoginPassword">Parola</label>
             <div class="input-group">
               <asp:TextBox ID="txtLoginPassword" runat="server"
                 TextMode="Password"
                 CssClass="form-control"
                 required="required"
-                placeholder="Password"
-                title="Password"></asp:TextBox>
+                placeholder="Parola"
+                title="Parola"></asp:TextBox>
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-lock"></i>
               </span>
             </div>
           </div>
           <div class="form-group">
-            <a href="ForgotPassword.aspx" 
-               class="pull-right">Forgot password?</a>
+            <a href="RecoverPasswordForm.aspx" 
+               class="pull-right">Ati uitat parola?</a>
           </div>
-          <div class="form-group">
-            <!-- NOTE: Include columns here to give some margin to the Check box -->
-            <div class="col-xs-12">
-              <div class="checkbox">
-                <label>
-                  <asp:CheckBox ID="chkRememberMe" runat="server" Checked="true" />
-                  Stay signed in
-                </label>
-              </div>
-            </div>
-          </div>
+         <div class="form-group">
           <div class="row">
             <div class="col-xs-12">
               <div id="divMessageArea" 
@@ -78,4 +68,5 @@
       </div>
     </div>
   </div>
+    </div>
 </asp:Content>

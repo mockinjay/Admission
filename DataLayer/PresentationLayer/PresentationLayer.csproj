@@ -43,6 +43,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -106,6 +114,7 @@
     <Content Include="css\Styles.css" />
     <Content Include="UserControls\AboutUs.ascx" />
     <Content Include="WebForms\AboutUsForm.aspx" />
+    <Content Include="WebForms\ChangePassword.aspx" />
     <Content Include="WebForms\Home.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -119,8 +128,10 @@
     <Content Include="js\modernizr.custom.70843.js" />
     <Content Include="UserControls\TermsAndConditions.ascx" />
     <Content Include="Web.config" />
+    <Content Include="WebForms\LocuriBuget.aspx" />
     <Content Include="WebForms\LoginForm.aspx" />
     <Content Include="WebForms\MemberProfileForm.aspx" />
+    <Content Include="WebForms\OptionChooserForm.aspx" />
     <Content Include="WebForms\RecoverPasswordForm.aspx" />
     <Content Include="WebForms\SignUpForm.aspx" />
   </ItemGroup>
@@ -139,6 +150,13 @@
     </Compile>
     <Compile Include="WebForms\AboutUsForm.aspx.designer.cs">
       <DependentUpon>AboutUsForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -172,6 +190,13 @@
     <Compile Include="UserControls\TermsAndConditions.ascx.designer.cs">
       <DependentUpon>TermsAndConditions.ascx</DependentUpon>
     </Compile>
+    <Compile Include="WebForms\LocuriBuget.aspx.cs">
+      <DependentUpon>LocuriBuget.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\LocuriBuget.aspx.designer.cs">
+      <DependentUpon>LocuriBuget.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\LoginForm.aspx.cs">
       <DependentUpon>LoginForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -185,6 +210,13 @@
     </Compile>
     <Compile Include="WebForms\MemberProfileForm.aspx.designer.cs">
       <DependentUpon>MemberProfileForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\OptionChooserForm.aspx.cs">
+      <DependentUpon>OptionChooserForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\OptionChooserForm.aspx.designer.cs">
+      <DependentUpon>OptionChooserForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\RecoverPasswordForm.aspx.cs">
       <DependentUpon>RecoverPasswordForm.aspx</DependentUpon>
@@ -204,6 +236,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BussinessLayer\BussinessLayer.csproj">
+      <Project>{16004983-6c3a-42dd-9847-2e9dfe0ca7d6}</Project>
+      <Name>BussinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{d0ac256d-0d58-4a2f-8d73-0765ad9e35f2}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

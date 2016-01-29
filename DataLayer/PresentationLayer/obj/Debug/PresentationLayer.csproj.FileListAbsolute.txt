@@ -38,3 +38,11 @@ C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\Micros
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\obj\Debug\PresentationLayer.csprojResolveAssemblyReference.cache
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\obj\Debug\PresentationLayer.dll
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\obj\Debug\PresentationLayer.pdb
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\BussinessLayer.dll
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\DataLayer.dll
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\EntityFramework.dll
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\BussinessLayer.pdb
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\DataLayer.pdb
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\EntityFramework.xml
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\EntityFramework.SqlServer.dll
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\EntityFramework.SqlServer.xml

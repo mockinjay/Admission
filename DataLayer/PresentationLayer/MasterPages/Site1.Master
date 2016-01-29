@@ -129,7 +129,7 @@
                 <a href="../WebForms/MemberProfileForm.aspx">Profilul meu</a>
               </li>
               <li>
-                <a href="#">Schimba parola</a>
+                <a href="../WebForms/ChangePassword.aspx">Schimba parola</a>
               </li>
               <li>
                 <a href="../WebForms/Home.aspx">Logout</a>
