@@ -22,6 +22,7 @@ C:\Users\Andrei\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\DataL
 C:\Users\Andrei\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\EntityFramework.xml
 C:\Users\Andrei\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Andrei\Documents\GitHub\Admission\DataLayer\TestConsole\obj\Debug\TestConsole.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
 C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\TestConsole.exe.config
 C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\TestConsole\obj\Debug\TestConsole.exe
 C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\TestConsole\obj\Debug\TestConsole.pdb
@@ -34,3 +35,5 @@ C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\DataL
 C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\EntityFramework.xml
 C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\TestConsole\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\TestConsole\obj\Debug\TestConsole.csprojResolveAssemblyReference.cache
+=======
+>>>>>>> origin/master
