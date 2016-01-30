@@ -117,7 +117,7 @@ namespace DataLayer
         {
             using (var context = new AdmitereLicentaContext())
             {
-                var query = context.Locuri_buget.Where(n => n.ID_Beneficiar == beneficiarID && n.ID_Specializare == specializationID).ToList().FirstOrDefault();
+                var query = context.Locuri_buget.Where(n => n.ID_Beneficiar == beneficiarID && n.ID_Specializare == specializationID).FirstOrDefault();
                 return query;
             }
         }
@@ -516,6 +516,7 @@ namespace DataLayer
                 return query;
             }
         }
+<<<<<<< HEAD
         public bool UpdateUserDetails(Candidati temp)
         {
             using (var context = new AdmitereLicentaContext())
@@ -549,6 +550,18 @@ namespace DataLayer
         //    }
 
         //}
+=======
+
+
+        //sergiu
+       
+        
+
+       
+       
+
+  
+>>>>>>> origin/master
     }
 }
 
