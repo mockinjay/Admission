@@ -32,7 +32,6 @@ namespace PresentationLayer.WebForms
             {
                 this.Server.Transfer("MemberProfileForm.aspx");
             }
-            
            
             System.Diagnostics.Debugger.Break();
         }
