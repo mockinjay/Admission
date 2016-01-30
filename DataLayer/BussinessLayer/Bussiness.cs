@@ -107,7 +107,7 @@ namespace BussinessLayer
             var variable = dt.ReadRezultate(proba).ToList<Rezultate_probe>();
             return variable;
         }
-<<<<<<< HEAD
+
         public decimal getUserID(string email)
         {
             return dt.ReadUserDetails(email).ID_Candidat;
@@ -160,8 +160,6 @@ namespace BussinessLayer
         {
             return dt.ReadUserDetails(email).Nota_BAC;
         }
-        
-=======
 
 
         public string doCkeckUser(string email, string password)
@@ -255,7 +253,5 @@ namespace BussinessLayer
             dt.UpdateUserDetails(c);
         }
 
-
->>>>>>> origin/master
     }
 }
