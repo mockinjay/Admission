@@ -171,20 +171,90 @@ namespace BussinessLayer
 
        public void setUserFirstName(string email,string name)
         {
-            dt.ReadUserDetails(email).Prenume = name;
+            Candidati c = dt.ReadUserDetails(email);
+            c.Prenume = name;
+            dt.UpdateUserDetails(c);
         }
 
 
         public void setUserLastName(string email, string name)
         {
-            dt.ReadUserDetails(email).Nume = name;
+            Candidati c = dt.ReadUserDetails(email);
+            c.Nume = name;
+            dt.UpdateUserDetails(c);
         }
 
         public void setUserReligion(string email,string religion)
         {
-            dt.ReadUserDetails(email).Religie = religion;
+            Candidati c = dt.ReadUserDetails(email);
+            c.Religie = religion;
+            dt.UpdateUserDetails(c);
+        }
+
+        public void setUserCNP(string email, Nullable<decimal> CNP)
+        {
+            Candidati c = dt.ReadUserDetails(email);
+            c.CNP = CNP;
+            dt.UpdateUserDetails(c);
+        }
+
+        public void setUserSex(string email, string sex)
+        {
+            Candidati c = dt.ReadUserDetails(email);
+            c.Sex = sex;
+            dt.UpdateUserDetails(c);
+        }
+
+        public void setUserAdresa(string email, string adresa)
+        {
+            Candidati c = dt.ReadUserDetails(email);
+            c.Adresa = adresa;
+            dt.UpdateUserDetails(c);
+        }
+
+        public void setUserOras(string email, string oras)
+        {
+            Candidati c = dt.ReadUserDetails(email);
+            c.Oras = oras;
+            dt.UpdateUserDetails(c);
         }
     
+        public void setUserJudet(string email, string judet)
+        {
+            Candidati c = dt.ReadUserDetails(email);
+            c.Judet = judet;
+            dt.UpdateUserDetails(c);
+        }
+
+        public void setUserNr_telefon(string email,Nullable<decimal> numar)
+        {
+            Candidati c = dt.ReadUserDetails(email);
+            c.Nr_telefon = numar;
+            dt.UpdateUserDetails(c);
+        }
+
+        public void setUserTara(string email, string tara)
+        {
+            Candidati c = dt.ReadUserDetails(email);
+            c.Tara = tara;
+            dt.UpdateUserDetails(c);
+        }
+
+        public void setUserNationalitate(string email, string nat)
+        {
+            Candidati c = dt.ReadUserDetails(email);
+            c.Nationalitate = nat;
+            dt.UpdateUserDetails(c);
+        }
+
+
+        public void setUserNota_Bac(string email,Nullable<decimal> nota)
+        {
+            Candidati c = dt.ReadUserDetails(email);
+            c.Nota_BAC = nota;
+            dt.UpdateUserDetails(c);
+        }
+
 
 >>>>>>> origin/master
     }
