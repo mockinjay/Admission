@@ -14,6 +14,7 @@ namespace DataLayer.Models
         public AdmitereLicentaContext()
             : base("Name=AdmitereLicentaContext")
         {
+            //this.Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<Beneficiari> Beneficiaris { get; set; }

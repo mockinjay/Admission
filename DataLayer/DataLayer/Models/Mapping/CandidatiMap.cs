@@ -30,8 +30,8 @@ namespace DataLayer.Models.Mapping
             this.Property(t => t.Judet)
                 .HasMaxLength(50);
 
-            this.Property(t => t.Tara)
-                .HasMaxLength(50);
+            //this.Property(t => t.Tara)
+                //.HasMaxLength(50);
 
             this.Property(t => t.Nationalitate)
                 .HasMaxLength(50);
@@ -53,7 +53,7 @@ namespace DataLayer.Models.Mapping
             this.Property(t => t.Oras).HasColumnName("Oras");
             this.Property(t => t.Judet).HasColumnName("Judet");
             this.Property(t => t.Nr_telefon).HasColumnName("Nr_telefon");
-            this.Property(t => t.Tara).HasColumnName("Tara");
+           // this.Property(t => t.Tara).HasColumnName("Tara");
             this.Property(t => t.Nationalitate).HasColumnName("Nationalitate");
             this.Property(t => t.Religie).HasColumnName("Religie");
             this.Property(t => t.Email).HasColumnName("Email");

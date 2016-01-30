@@ -13,12 +13,30 @@ namespace TestConsole
         static DataTier dt = new DataTier();
         static void Main(string[] args)
         {
-            //checkUser();
+           // checkUser();
             //getPass();
-           // getloc();
-            delOp();
+            //getloc();
+            //delOp();
+            //updateop();
+            addUseroption();
         }
 
+        private static void addUseroption()
+        {
+            string result = dt.AddUserOption("Armament, aparatură artileristică şi sisteme de conducere  a focului", 2, "nu");
+            Console.WriteLine(result);
+        }
+
+        private static void updateop()
+        {
+            bool flag = dt.UpdateUserOption(1, "Calculatoare şi sisteme informatice pentru apărare şi securitate naţională");
+            if (flag == true)
+            {
+                Console.WriteLine("OK");
+            }
+            else
+                Console.WriteLine("Prost");
+        }
         private static void delOp()
         {
             bool flag = dt.ChangePassword("sas@gmail.com","isAdmin","admin");
@@ -30,20 +48,19 @@ namespace TestConsole
 
         private static void getloc()
         {
-            IEnumerable<Locuri_buget> loc = dt.ReadLocuriBuget(1, 1);
-            if (loc.Any())
+            Locuri_buget loc = dt.ReadLocuriBuget(14, 1);
+            if (loc!=null)
             {
-                foreach (var temp in loc)
-                {
-                    Console.Write(temp.ID_Beneficiar);
+              
+                    Console.Write(loc.ID_Beneficiar);
                     Console.Write(": ");
-                    Console.Write(temp.Nr_locuri.ToString());
-                }
+                    Console.Write(loc.Nr_locuri.ToString());
+                
             }
         }
         private static void checkUser()
         {
-            String temp = dt.CheckUser("sas@gmail.com", "isAdmin");
+            String temp = dt.CheckUser("sas@gmail.com", "admin");
             if (temp == "WrongUser")
             {
                 Console.WriteLine("No user in the database");

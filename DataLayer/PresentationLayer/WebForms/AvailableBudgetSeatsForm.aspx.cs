@@ -14,7 +14,7 @@ namespace PresentationLayer.WebForms
     public partial class LocuriBuget : System.Web.UI.Page
     {
         IEnumerable<Facultati> fac;
-        DataTier dt;
+        Bussiness dt;
         public static string selFaculty = "2";
         public static string selDepartment = "2";
         public static string selBeneficiary = "2";
@@ -40,7 +40,7 @@ namespace PresentationLayer.WebForms
 
             }
 
-            Locuri_buget lb = dt.ReadLocuriBuget(ddlSpecialization.SelectedItem.Text, ddlBeneficiary.SelectedItem.Text);
+            Locuri_buget lb = dt.getLocuriBuget(ddlSpecialization.SelectedItem.Text, ddlBeneficiary.SelectedItem.Text);
             if (lb != null)
                 if (lb.Din_care_fete != null)
                     lblMessage.Text = "Numarul de locuri la buget este: " + lb.Nr_locuri.ToString() + ", dintre care fete: " + lb.Din_care_fete.ToString();
@@ -54,7 +54,7 @@ namespace PresentationLayer.WebForms
         {
             string id = ddlFaculty.SelectedValue;
             //var id= fac.First<Facultati>(x => x.Nume_facultate.Equals(txtFac)).ID_Facultate;
-            var dep = dt.ReadDepartments(Int32.Parse(id));
+            var dep = dt.getDepartament(Int32.Parse(id));
             ddlDepartment.DataSource = dep;
             ddlDepartment.DataValueField = "ID_Departament";
             ddlDepartment.DataTextField = "Nume_departament";
@@ -68,8 +68,8 @@ namespace PresentationLayer.WebForms
         {
             if (ddlFaculty.Items.Count == 0)
             {
-                dt = new DataTier();
-                fac = dt.ReadFaculties();
+                dt = new Bussiness();
+                fac = dt.getFacultati();
 
                 ddlFaculty.DataSource = fac;
 
@@ -87,7 +87,7 @@ namespace PresentationLayer.WebForms
         {
             string id = selFaculty;
             //var id= fac.First<Facultati>(x => x.Nume_facultate.Equals(txtFac)).ID_Facultate;
-            var dep = dt.ReadDepartments(Int32.Parse(id));
+            var dep = dt.getDepartament(Int32.Parse(id));
             ddlDepartment.DataSource = dep;
             ddlDepartment.DataValueField = "ID_Departament";
             ddlDepartment.DataTextField = "Nume_departament";
@@ -100,7 +100,7 @@ namespace PresentationLayer.WebForms
 
             string id = ddlDepartment.SelectedValue;
             //var id= fac.First<Facultati>(x => x.Nume_facultate.Equals(txtFac)).ID_Facultate;
-            var spec = dt.ReadSpecialization(Int32.Parse(id));
+            var spec = dt.getSpecializari(Int32.Parse(id));
             ddlSpecialization.DataSource = spec;
             ddlSpecialization.DataValueField = "ID_Specializare";
             ddlSpecialization.DataTextField = "Nume_specializare";
@@ -112,7 +112,7 @@ namespace PresentationLayer.WebForms
         {
             //string id = ddlBeneficiary.SelectedValue;
             //var id= fac.First<Facultati>(x => x.Nume_facultate.Equals(txtFac)).ID_Facultate;
-            var ben = dt.ReadAllBeneficiari();
+            var ben = dt.getBeneficiari();
             ddlBeneficiary.DataSource = ben;
             ddlBeneficiary.DataValueField = "ID_Beneficiar";
             ddlBeneficiary.DataTextField = "Nume_beneficiar";
@@ -124,7 +124,7 @@ namespace PresentationLayer.WebForms
         {
             string id = selDepartment;
             //var id= fac.First<Facultati>(x => x.Nume_facultate.Equals(txtFac)).ID_Facultate;
-            var spec = dt.ReadSpecialization(Int32.Parse(id));
+            var spec = dt.getSpecializari(Int32.Parse(id));
             ddlSpecialization.DataSource = spec;
             ddlSpecialization.DataValueField = "ID_Specializare";
             ddlSpecialization.DataTextField = "Nume_specializare";
@@ -133,7 +133,7 @@ namespace PresentationLayer.WebForms
 
         protected void ddlBeneficiary_Create()
         {
-            var ben = dt.ReadAllBeneficiari();
+            var ben = dt.getBeneficiari();
             ddlBeneficiary.DataSource = ben;
             ddlBeneficiary.DataValueField = "ID_Beneficiar";
             ddlBeneficiary.DataTextField = "Nume_beneficiar";

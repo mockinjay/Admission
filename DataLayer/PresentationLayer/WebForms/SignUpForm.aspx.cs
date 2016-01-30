@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using BussinessLayer;
 namespace PresentationLayer.WebForms
 {
     public partial class SignUpForm : System.Web.UI.Page
@@ -15,16 +15,8 @@ namespace PresentationLayer.WebForms
         }
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            //UserData entity = new UserData();
 
-            //entity.FirstName = txtFirst.Text;
-            //entity.LastName = txtLast.Text;
-            //entity.Email = txtEmail.Text;
-            //entity.Password = txtPassword.Text;
-            //entity.IsAgreeToTermsChecked = true;
-
-            // Show the message area
-            //
+            
             if(txtPassword.Text.ToString().Equals(txtConfirmPassword.Text.ToString())==false)
             {
                 divMessageArea.Visible = true;

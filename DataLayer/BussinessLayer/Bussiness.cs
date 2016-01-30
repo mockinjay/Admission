@@ -74,7 +74,11 @@ namespace BussinessLayer
             var variable = dt.ReadLocuriBuget(specializationID,beneficiarID);
             return variable;
         }
-
+        public Locuri_buget getLocuriBuget(string specializare, string beneficiar)
+        {
+            var variable = dt.ReadLocuriBuget(specializare, beneficiar);
+            return variable;
+        }
         public List<Locuri_taxa> getLocuriTaxa(int specialization)
         {
             var variable = dt.ReadLocuriTaxa(specialization).ToList();
@@ -144,10 +148,7 @@ namespace BussinessLayer
         {
             return dt.ReadUserDetails(email).Nr_telefon;
         }
-        public string getUserTara(string email)
-        {
-            return dt.ReadUserDetails(email).Tara;
-        }
+       
         public string getUserNationalitate(string email)
         {
             return dt.ReadUserDetails(email).Nationalitate;
@@ -231,12 +232,7 @@ namespace BussinessLayer
             dt.UpdateUserDetails(c);
         }
 
-        public void setUserTara(string email, string tara)
-        {
-            Candidati c = dt.ReadUserDetails(email);
-            c.Tara = tara;
-            dt.UpdateUserDetails(c);
-        }
+      
 
         public void setUserNationalitate(string email, string nat)
         {
