@@ -45,9 +45,10 @@ namespace BussinessLayer
         }
 
         public List<Facultati> getFacultati()
-        {
+        { 
             var variable = dt.ReadFaculties().ToList<Facultati>();
             return variable;
+           
         }
 
         public List<Departament> getDepartament(int facultyId)
@@ -107,6 +108,28 @@ namespace BussinessLayer
             return variable;
         }
 
+
+        public string doCkeckUser(string email, string password)
+        {
+            return dt.CheckUser(email, password);
+        }
+
+       public void setUserFirstName(string email,string name)
+        {
+            dt.ReadUserDetails(email).Prenume = name;
+        }
+
+
+        public void setUserLastName(string email, string name)
+        {
+            dt.ReadUserDetails(email).Nume = name;
+        }
+
+        public void setUserReligion(string email,string religion)
+        {
+            dt.ReadUserDetails(email).Religie = religion;
+        }
+    
 
     }
 }

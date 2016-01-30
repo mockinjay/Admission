@@ -14,7 +14,6 @@ namespace DataLayer
         int currentUser;
         public DataTier()
         {
-
             currentUser = 4;
         }
 
