@@ -106,7 +106,58 @@ namespace BussinessLayer
             var variable = dt.ReadRezultate(proba).ToList<Rezultate_probe>();
             return variable;
         }
-
-
+        public decimal getUserID(string email)
+        {
+            return dt.ReadUserDetails(email).ID_Candidat;
+        }
+        public string getUserFirstName(string email)
+        {
+            return dt.ReadUserDetails(email).Prenume;
+        }
+        public string getUserLastName(string email)
+        {
+            return dt.ReadUserDetails(email).Nume;
+        }
+        public Nullable<decimal> getUserCNP(string email)
+        {
+            return dt.ReadUserDetails(email).CNP;
+        }
+        public string getUserSex(string email)
+        {
+            return dt.ReadUserDetails(email).Sex;
+        }
+        public string getUserAdresa(string email)
+        {
+            return dt.ReadUserDetails(email).Adresa;
+        }
+        public string getUserOras(string email)
+        {
+            return dt.ReadUserDetails(email).Oras;
+        }
+        public string getUserJudet(string email)
+        {
+            return dt.ReadUserDetails(email).Judet;
+        }
+        public Nullable<decimal> getUserNr_telefon(string email)
+        {
+            return dt.ReadUserDetails(email).Nr_telefon;
+        }
+        public string getUserTara(string email)
+        {
+            return dt.ReadUserDetails(email).Tara;
+        }
+        public string getUserNationalitate(string email)
+        {
+            return dt.ReadUserDetails(email).Nationalitate;
+        }
+        public string getUserReligie(string email)
+        {
+            return dt.ReadUserDetails(email).Religie;
+        }
+        public Nullable<decimal> getUserNota_BAC(string email)
+        {
+            return dt.ReadUserDetails(email).Nota_BAC;
+        }
+        
     }
 }
