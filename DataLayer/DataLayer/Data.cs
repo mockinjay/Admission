@@ -599,6 +599,20 @@ namespace DataLayer
         }
 
 
+        public Locuri_taxa ReadLocuriTaxa(string specialization)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = (from n in context.Specializaris
+                             join l in context.Locuri_taxa
+                             on n.ID_Specializare equals l.ID_Specializare
+                             where n.Nume_specializare == specialization
+                             select l).FirstOrDefault();
+
+                return query;
+            }
+        }
+
 
     }
 }

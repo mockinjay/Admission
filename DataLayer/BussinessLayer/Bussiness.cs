@@ -74,10 +74,7 @@ namespace BussinessLayer
             var variable = dt.ReadLocuriBuget(specializationID,beneficiarID);
             return variable;
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
         public Locuri_buget getLocuriBuget(string specializare, string beneficiar)
         {
             var variable = dt.ReadLocuriBuget(specializare, beneficiar);
@@ -152,11 +149,7 @@ namespace BussinessLayer
         {
             return dt.ReadUserDetails(email).Nr_telefon;
         }
-<<<<<<< HEAD
-       
-=======
-        
->>>>>>> origin/master
+
         public string getUserNationalitate(string email)
         {
             return dt.ReadUserDetails(email).Nationalitate;
