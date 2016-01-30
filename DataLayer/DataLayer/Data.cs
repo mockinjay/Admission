@@ -15,7 +15,6 @@ namespace DataLayer
         int currentUser;
         public DataTier()
         {
-
             currentUser = 4;
         }
 
@@ -478,17 +477,81 @@ namespace DataLayer
                 }
             }
         }
-        public IEnumerable<Olimpici> ReadAllOlimpici()
+        public IEnumerable<Candidati>ReadAllOlimpici()
         {
             using (var context = new AdmitereLicentaContext())
             {
-                var query = context.Olimpicis;
-                return query.ToList();
+                var query = from n in context.Candidatis
+                            join u in context.Olimpicis
+                            on n.ID_Candidat equals u.ID_Candidat
+                            select n;
+                return query.ToList<Candidati>();
+            }
+        }
+        public IEnumerable<Rezultate_probe> ReadRezultate(int proba)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = from u in context.Rezultate_probe
+                            where u.ID_Proba == proba
+                            select u;
+
+                query.OrderBy(n => n.ID_Proba).ThenByDescending(n => n.Nota).ToList();
+                return query.ToList<Rezultate_probe>();
             }
         }
 
+        public IEnumerable<Rezultate_probe> ReadTestsResult()
+        {
+            using (var contest = new AdmitereLicentaContext())
+            {
+                //var query = (from n in contest.Rezultate_probe
+                //             join p in contest.Probes
+                //             on n.ID_Proba equals p.ID_Proba
+                //             where n.ID_Candidat == currentUser
+                //             select new { p.Nume_Proba, n.Nota }
+                //    ).ToList();
+                var query = contest.Rezultate_probe.Where(n => n.ID_Candidat == currentUser).ToList<Rezultate_probe>();
+                return query;
+            }
+
+        }
+
+        public IEnumerable<Probe> ReadTest()
+        {
+            using (var contest = new AdmitereLicentaContext())
+            {
+                var query = contest.Probes.ToList<Probe>();
+                return query;
+            }
+        }
+
+
         //sergiu
-       
+
+        public bool UpdateUserDetails(Candidati temp)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        context.Candidatis.Add(temp);
+                        context.Entry(temp).State = System.Data.Entity.EntityState.Modified;
+                        context.SaveChanges();
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+
+        }
     }
 }
 
