@@ -1,8 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Site1.Master" AutoEventWireup="true" CodeBehind="OptionChooserForm.aspx.cs" Inherits="PresentationLayer.WebForms.OptionChooserForm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Site1.Master" AutoEventWireup="true" CodeBehind="AvailableTaxSeatsForm.aspx.cs" Inherits="PresentationLayer.WebForms.AvailableTaxSeatsForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <div class="row">
     <div class="col-md-6 center-block">
       <asp:ValidationSummary ID="valSummary"
@@ -19,7 +18,7 @@
     <div class="col-md-6 center-block">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Selectare Optiune</h3>
+          <h3 class="panel-title">Locuri Taxa</h3>
         </div>
         <div class="panel-body">
           <div class="form-group">
@@ -53,35 +52,9 @@
                       runat="server" AutoPostBack="True"  ViewStateMode="Enabled" ></asp:DropDownList>
               </div>
             </div>
-          </div>
-            <div class="form-group">
-            <div class="row">
-              <div class="col-xs-8">
-                <label for="txtPriority">
-                  Selecteaza Prioritatea</label>
-                  <asp:DropDownList ID="ddlPriority" 
-                       CssClass="form-control"
-                      runat="server" AutoPostBack="True"  ViewStateMode="Enabled" >
-                       <asp:ListItem Text="1" Value="1" />
-                       <asp:ListItem Text="2" Value="2" />
-                       <asp:ListItem Text="3" Value="3" />
-                       <asp:ListItem Text="4" Value="4" />
-                       <asp:ListItem Text="5" Value="5" />
-                  </asp:DropDownList>
-              </div>
-            </div>
-          </div>
-            <div class="form-group">
-            <!-- NOTE: Include columns here to give some margin to the Check box -->
-            <div class="col-xs-12">
-              <div class="checkbox">
-                <label>
-                  <input id="chkTaxSeats" type="checkbox" />
-                  In caz ca nu sunt admis, optez pentru a fi repartizat automat pe un loc la taxa.
-                </label>
-              </div>
-            </div>
-          </div>
+            
+         
+               
              <div class="form-group">
           <div class="row">
             <div class="col-xs-12">
@@ -97,20 +70,13 @@
             </div>
           </div>
         </div>
-            <div class="panel-footer">
             
-          <asp:Button ID="btnChooseOption" runat="server"
-            Text="Adauga Optiunea"
-            CssClass="btn btn-primary"
-            title="Adauga Optiunea"
-            OnClick="btnChooseOption_Click" />
-        </div>
-            </div>
+            
           </div>
         </div>
       </div>
-  
-    
+    </div>
+  </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="EndOfPageContent" runat="server">
 </asp:Content>

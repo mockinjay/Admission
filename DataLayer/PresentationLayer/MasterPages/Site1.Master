@@ -104,11 +104,22 @@
                </li> -->
            
               <li >
-              <a href="../WebForms/AboutUsForm.aspx" class="modify-position">Despre Noi</a>
+              <a href="../WebForms/OptionChooserForm.aspx" class="modify-position">Alegere Optiune</a>
               
             </li>
-            
-           
+              <li >
+              <a href="../WebForms/AboutUsForm.aspx" class="modify-position" >Despre Noi</a>
+              
+            </li>
+              <li class="dropdown modify-position">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Locuri admitere<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="AvailableBudgetSeatsForm.aspx">Locuri Buget</a>
+                </li>
+                <li><a href="AvailableTaxSeatsForm.aspx">Locuri Taxa</a></li>
+                
+              </ul>
+            </li>
           </ul>
             <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">

@@ -4,42 +4,50 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DataLayer;
+using BussinessLayer;
 using DataLayer.Models;
-using System.Data.Entity;
+using DataLayer;
+
 
 namespace PresentationLayer.WebForms
 {
-    public partial class OptionChooserForm : System.Web.UI.Page
+    public partial class LocuriBuget : System.Web.UI.Page
     {
         IEnumerable<Facultati> fac;
         DataTier dt;
-        public static string selFaculty="2";
-        public static string selDepartment="2";
-        
-       
+        public static string selFaculty = "2";
+        public static string selDepartment = "2";
+        public static string selBeneficiary = "2";
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if(ddlFaculty.SelectedIndex==0)
-            //{
-            //    ddlFaculty_SelectedIndexChanged(sender, e);
-            //}
-            //if (ddlDepartment.SelectedIndex == 0)
-            //{
-            //    ddlDepartment_SelectedIndexChanged(sender, e);
-            //}
+            
+
             if (!ddlFaculty.SelectedValue.Equals(selFaculty))
             {
-                selFaculty= ddlFaculty.SelectedValue;
+                selFaculty = ddlFaculty.SelectedValue;
                 ddlFaculty_SelectedIndexChanged(sender, e);
             }
-            if(!ddlDepartment.SelectedValue.Equals(selDepartment))
+            if (!ddlDepartment.SelectedValue.Equals(selDepartment))
             {
                 selDepartment = ddlDepartment.SelectedValue;
                 ddlDepartment_SelectedIndexChanged(sender, e);
-                
+
+            }
+            if (!ddlBeneficiary.SelectedValue.Equals(selBeneficiary))
+            {
+                selBeneficiary = ddlBeneficiary.SelectedValue;
+                ddlBeneficiary_SelectedIndexChanged(sender, e);
+
             }
 
+            Locuri_buget lb = dt.ReadLocuriBuget(ddlSpecialization.SelectedItem.Text, ddlBeneficiary.SelectedItem.Text);
+            if (lb != null)
+                if (lb.Din_care_fete != null)
+                    lblMessage.Text = "Numarul de locuri la buget este: " + lb.Nr_locuri.ToString() + ", dintre care fete: " + lb.Din_care_fete.ToString();
+                else
+                    lblMessage.Text = "Numarul de locuri la buget este: " + lb.Nr_locuri.ToString();
+            else
+                lblMessage.Text = "Nu exista locuri la beneficiarul " + ddlBeneficiary.SelectedItem + " pentru specializarea " + ddlSpecialization.SelectedItem + ".";
         }
 
         protected void ddlFaculty_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,14 +59,14 @@ namespace PresentationLayer.WebForms
             ddlDepartment.DataValueField = "ID_Departament";
             ddlDepartment.DataTextField = "Nume_departament";
             ddlDepartment.DataBind();
-            
+
         }
 
-       
-        
+
+
         protected void ddlFaculty_Init(object sender, EventArgs e)
         {
-            if(ddlFaculty.Items.Count==0)
+            if (ddlFaculty.Items.Count == 0)
             {
                 dt = new DataTier();
                 fac = dt.ReadFaculties();
@@ -70,9 +78,9 @@ namespace PresentationLayer.WebForms
                 ddlFaculty.DataBind();
                 ddlDepartment_Create();
                 ddlSpecialization_Create();
-                
+                ddlBeneficiary_Create();
             }
-            
+
         }
 
         protected void ddlDepartment_Create()
@@ -89,15 +97,27 @@ namespace PresentationLayer.WebForms
 
         protected void ddlDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-                string id = ddlDepartment.SelectedValue;
-                //var id= fac.First<Facultati>(x => x.Nume_facultate.Equals(txtFac)).ID_Facultate;
-                var spec = dt.ReadSpecialization(Int32.Parse(id));
-                ddlSpecialization.DataSource = spec;
-                ddlSpecialization.DataValueField = "ID_Specializare";
-                ddlSpecialization.DataTextField = "Nume_specializare";
-                ddlSpecialization.DataBind();
-            
+
+            string id = ddlDepartment.SelectedValue;
+            //var id= fac.First<Facultati>(x => x.Nume_facultate.Equals(txtFac)).ID_Facultate;
+            var spec = dt.ReadSpecialization(Int32.Parse(id));
+            ddlSpecialization.DataSource = spec;
+            ddlSpecialization.DataValueField = "ID_Specializare";
+            ddlSpecialization.DataTextField = "Nume_specializare";
+            ddlSpecialization.DataBind();
+
+        }
+
+        protected void ddlBeneficiary_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //string id = ddlBeneficiary.SelectedValue;
+            //var id= fac.First<Facultati>(x => x.Nume_facultate.Equals(txtFac)).ID_Facultate;
+            var ben = dt.ReadAllBeneficiari();
+            ddlBeneficiary.DataSource = ben;
+            ddlBeneficiary.DataValueField = "ID_Beneficiar";
+            ddlBeneficiary.DataTextField = "Nume_beneficiar";
+            ddlBeneficiary.SelectedIndex = Int32.Parse(selBeneficiary)-1;
+            ddlBeneficiary.DataBind();
         }
 
         protected void ddlSpecialization_Create()
@@ -111,12 +131,16 @@ namespace PresentationLayer.WebForms
             ddlSpecialization.DataBind();
         }
 
-       
-
-        protected void btnChooseOption_Click(object sender, EventArgs e)
+        protected void ddlBeneficiary_Create()
         {
+            var ben = dt.ReadAllBeneficiari();
+            ddlBeneficiary.DataSource = ben;
+            ddlBeneficiary.DataValueField = "ID_Beneficiar";
+            ddlBeneficiary.DataTextField = "Nume_beneficiar";
+            ddlBeneficiary.SelectedIndex = Int32.Parse(selBeneficiary) - 1;
+            ddlBeneficiary.DataBind();
             divMessageArea.Visible = true;
-            lblMessage.Text = ddlFaculty.SelectedItem + " " + ddlDepartment.SelectedItem + " " + ddlSpecialization.SelectedItem + " " + ddlPriority.SelectedItem;
+            
         }
     }
 }

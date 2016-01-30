@@ -74,6 +74,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\PagerStyle.css" />
     <Content Include="Images\male.png" />
     <Content Include="packages.config" />
     <Content Include="css\bootstrap-theme.css.map" />
@@ -114,6 +115,7 @@
     <Content Include="css\Styles.css" />
     <Content Include="UserControls\AboutUs.ascx" />
     <Content Include="WebForms\AboutUsForm.aspx" />
+    <Content Include="WebForms\AvailableTaxSeatsForm.aspx" />
     <Content Include="WebForms\ChangePassword.aspx" />
     <Content Include="WebForms\Home.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -128,7 +130,7 @@
     <Content Include="js\modernizr.custom.70843.js" />
     <Content Include="UserControls\TermsAndConditions.ascx" />
     <Content Include="Web.config" />
-    <Content Include="WebForms\LocuriBuget.aspx" />
+    <Content Include="WebForms\AvailableBudgetSeatsForm.aspx" />
     <Content Include="WebForms\LoginForm.aspx" />
     <Content Include="WebForms\MemberProfileForm.aspx" />
     <Content Include="WebForms\OptionChooserForm.aspx" />
@@ -150,6 +152,13 @@
     </Compile>
     <Compile Include="WebForms\AboutUsForm.aspx.designer.cs">
       <DependentUpon>AboutUsForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\AvailableTaxSeatsForm.aspx.cs">
+      <DependentUpon>AvailableTaxSeatsForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\AvailableTaxSeatsForm.aspx.designer.cs">
+      <DependentUpon>AvailableTaxSeatsForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
@@ -190,12 +199,12 @@
     <Compile Include="UserControls\TermsAndConditions.ascx.designer.cs">
       <DependentUpon>TermsAndConditions.ascx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\LocuriBuget.aspx.cs">
-      <DependentUpon>LocuriBuget.aspx</DependentUpon>
+    <Compile Include="WebForms\AvailableBudgetSeatsForm.aspx.cs">
+      <DependentUpon>AvailableBudgetSeatsForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\LocuriBuget.aspx.designer.cs">
-      <DependentUpon>LocuriBuget.aspx</DependentUpon>
+    <Compile Include="WebForms\AvailableBudgetSeatsForm.aspx.designer.cs">
+      <DependentUpon>AvailableBudgetSeatsForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\LoginForm.aspx.cs">
       <DependentUpon>LoginForm.aspx</DependentUpon>
