@@ -44,32 +44,6 @@ namespace BussinessLayer
             return dt.CreateUser(addUser);
         }
 
-
-        public List<Tuple<string, int>> ReadTestsResults()
-        {
-            IEnumerable<Probe> probe = dt.ReadTest();
-            IEnumerable<Rezultate_probe> result = dt.ReadTestsResult();
-
-            List<Tuple<string, int>> list = new List<Tuple<string, int>>();
-            foreach (var _test in probe)
-            {
-                int probaID = Decimal.ToInt32(_test.ID_Proba);
-                string numeProba = _test.Nume_Proba;
-                var nota = (from n in result
-                           where n.ID_Proba == probaID
-                           select n.Nota).FirstOrDefault();
-                if (nota!=null)
-                {
-                    list.Add(new Tuple<string, int>(numeProba,Convert.ToInt32(nota )));
-                    
-                }
-                
-
-            }
-            return list;
-
-        }
-
         public List<Facultati> getFacultati()
         { 
             var variable = dt.ReadFaculties().ToList<Facultati>();
@@ -100,10 +74,18 @@ namespace BussinessLayer
             var variable = dt.ReadLocuriBuget(specializationID,beneficiarID);
             return variable;
         }
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/master
+        public Locuri_buget getLocuriBuget(string specializare, string beneficiar)
+        {
+            var variable = dt.ReadLocuriBuget(specializare, beneficiar);
+            return variable;
+        }
         public List<Locuri_taxa> getLocuriTaxa(int specialization)
         {
-            var variable = dt.ReadLocuriTaxa(specialization).ToList<Locuri_taxa>();
+            var variable = dt.ReadLocuriTaxa(specialization).ToList();
             return variable;
         }
 
@@ -170,7 +152,11 @@ namespace BussinessLayer
         {
             return dt.ReadUserDetails(email).Nr_telefon;
         }
+<<<<<<< HEAD
+       
+=======
         
+>>>>>>> origin/master
         public string getUserNationalitate(string email)
         {
             return dt.ReadUserDetails(email).Nationalitate;
@@ -270,6 +256,6 @@ namespace BussinessLayer
             c.Nota_BAC = nota;
             dt.UpdateUserDetails(c);
         }
-        
+
     }
 }

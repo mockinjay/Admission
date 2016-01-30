@@ -18,6 +18,7 @@ C:\Users\adima\Documents\GitHub\AdmissionPortal\PresentationLayer\bin\Microsoft.
 C:\Users\adima\Documents\GitHub\AdmissionPortal\PresentationLayer\obj\Debug\PresentationLayer.dll
 C:\Users\adima\Documents\GitHub\AdmissionPortal\PresentationLayer\obj\Debug\PresentationLayer.pdb
 C:\Users\adima\Documents\GitHub\AdmissionPortal\PresentationLayer\obj\Debug\PresentationLayer.csprojResolveAssemblyReference.cache
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\obj\Debug\PresentationLayer.csprojResolveAssemblyReference.cache
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\roslyn\csc.exe
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -33,8 +34,15 @@ C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\roslyn
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\PresentationLayer.dll.config
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\PresentationLayer.dll
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\PresentationLayer.pdb
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\BussinessLayer.dll
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\DataLayer.dll
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\EntityFramework.dll
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\EntityFramework.SqlServer.dll
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\BussinessLayer.pdb
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\DataLayer.pdb
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\EntityFramework.xml
+C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\EntityFramework.SqlServer.xml
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\obj\Debug\PresentationLayer.csprojResolveAssemblyReference.cache
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\obj\Debug\PresentationLayer.dll
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\PresentationLayer\obj\Debug\PresentationLayer.pdb
