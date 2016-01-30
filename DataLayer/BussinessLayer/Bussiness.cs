@@ -69,15 +69,15 @@ namespace BussinessLayer
             return variable;
         }
 
-        public List<Locuri_buget> getLocuriBuget(int specializationID, int beneficiarID)
+        public Locuri_buget getLocuriBuget(int specializationID, int beneficiarID)
         {
-            var variable = dt.ReadLocuriBuget(specializationID,beneficiarID).ToList<Locuri_buget>();
+            var variable = dt.ReadLocuriBuget(specializationID,beneficiarID);
             return variable;
         }
 
         public List<Locuri_taxa> getLocuriTaxa(int specialization)
         {
-            var variable = dt.ReadLocuriTaxa(specialization).ToList<Locuri_taxa>();
+            var variable = dt.ReadLocuriTaxa(specialization).ToList();
             return variable;
         }
 
