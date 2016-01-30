@@ -43,5 +43,30 @@ namespace BussinessLayer
             addUser.Add("email", email);
             return dt.CreateUser(addUser);
         }
+
+        public List<Tuple<string, int>> ReadTestsResults()
+        {
+            IEnumerable<Probe> probe = dt.ReadTest();
+            IEnumerable<Rezultate_probe> result = dt.ReadTestsResult();
+
+            List<Tuple<string, int>> list = new List<Tuple<string, int>>();
+            foreach (var _test in probe)
+            {
+                int probaID = Decimal.ToInt32(_test.ID_Proba);
+                string numeProba = _test.Nume_Proba;
+                var nota = (from n in result
+                           where n.ID_Proba == probaID
+                           select n.Nota).FirstOrDefault();
+                if (nota!=null)
+                {
+                    list.Add(new Tuple<string, int>(numeProba,Convert.ToInt32(nota )));
+                    
+                }
+                
+
+            }
+            return list;
+
+        }
     }
 }
