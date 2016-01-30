@@ -125,7 +125,7 @@ namespace DataLayer
         {
             using (var context = new AdmitereLicentaContext())
             {
-                var query = context.Locuri_buget.Where(n => n.ID_Beneficiar == beneficiarID && n.ID_Specializare == specializationID).ToList().FirstOrDefault();
+                var query = context.Locuri_buget.Where(n => n.ID_Beneficiar == beneficiarID && n.ID_Specializare == specializationID).FirstOrDefault();
                 return query;
             }
         }
@@ -528,7 +528,10 @@ namespace DataLayer
 
 
         //sergiu
+       
+        
 
+       
         public bool UpdateUserDetails(Candidati temp)
         {
             using (var context = new AdmitereLicentaContext())
@@ -552,6 +555,41 @@ namespace DataLayer
             }
 
         }
+        public Locuri_buget ReadLocuriBuget(string specializationName, string beneficiarName)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = (from n in context.Beneficiaris
+                             join l in context.Locuri_buget
+                             on n.ID_Beneficiar equals l.ID_Beneficiar
+                             join s in context.Specializaris
+                             on l.ID_Specializare equals s.ID_Specializare
+                             where s.Nume_specializare == specializationName && n.Nume_beneficiar == beneficiarName
+                             select l
+                    ).FirstOrDefault();
+                return query;
+            }
+        }
+        private Candidati GetCurrentUser()
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var cand = context.Candidatis.Where(n => n.ID_Candidat == currentUser).FirstOrDefault();
+                return cand;
+            }
+
+        }
+        public Specializari ReadOneSpecialization(int specializationID)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var specialization = context.Specializaris.Where(n => n.ID_Specializare == specializationID).FirstOrDefault();
+                return specialization;
+            }
+
+        }
+
+  
     }
 }
 

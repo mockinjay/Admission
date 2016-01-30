@@ -25,5 +25,5 @@
 
         public void setUserNr_telefon(string email,Nullable<decimal> numar)
         {
-            dt.ReadUserDetails()
+    dt.ReadUserDetails();
         }
