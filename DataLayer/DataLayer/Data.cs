@@ -9,6 +9,7 @@ using System.Transactions;
 
 namespace DataLayer
 {
+   
     public class DataTier
     {
         int currentUser;
@@ -91,6 +92,14 @@ namespace DataLayer
                 return query;
             }
         }
+        public Candidati ReadUserDetails()
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = context.Candidatis.Where(n => n.ID_Candidat == currentUser).ToList<Candidati>().FirstOrDefault();
+                return query;
+            }
+        }
 
         public IEnumerable<Utilizatori> ReadPassword(string email)
         {
@@ -113,14 +122,15 @@ namespace DataLayer
                 return query.ToList();
             }
         }
-        public IEnumerable<Locuri_buget> ReadLocuriBuget(int specializationID, int beneficiarID)
+        public Locuri_buget ReadLocuriBuget(int specializationID, int beneficiarID)
         {
             using (var context = new AdmitereLicentaContext())
             {
-                var query = context.Locuri_buget.Where(n => n.ID_Beneficiar == beneficiarID && n.ID_Specializare == specializationID).ToList();
+                var query = context.Locuri_buget.Where(n => n.ID_Beneficiar == beneficiarID && n.ID_Specializare == specializationID).ToList().FirstOrDefault();
                 return query;
             }
         }
+
 
         public IEnumerable<Locuri_taxa> ReadLocuriTaxa(int specialization)
         {
@@ -135,6 +145,7 @@ namespace DataLayer
         {
             using (var context = new AdmitereLicentaContext())
             {
+                
                 using (var transaction = context.Database.BeginTransaction())
                 {
                     try
@@ -154,20 +165,33 @@ namespace DataLayer
                             {
                                 return "SpecializationExist";
                             }
+                        }
+                        var query2 = this.GetUserOptionOrderedByPriority();
+                        bool flag = false;
+                        foreach(var temp in query2)
+                        {
                             if (temp.Prioritate == prioritate)
                             {
-                                return "ThisPriorityExists";
+                                flag = true; ;
+                            }
+                            if (flag==true)
+                            {
+                                temp.Prioritate++;
+                                this.UpdateUserOption(temp);
                             }
 
                         }
-
                         //var query = context.Specializaris.Where(n => n.Nume_specializare == specializare).First();
-
+                        currentUser = 4;
+                        var cand = this.GetCurrentUser();
+                        var spec = context.Specializaris.Where(n => n.Nume_specializare == specializare).FirstOrDefault();
                         var option = new Optiuni();
-                        option.ID_Candidat = currentUser;
+                        option.ID_Candidat = 4;
                         option.Prioritate = prioritate;
                         option.Doreste_Taxa = isTaxa;
                         option.ID_Specializare = q;
+                        option.Candidati = cand;
+                        option.Specializari = spec;
                         context.Optiunis.Add(option);
                         context.Entry(option).State = System.Data.Entity.EntityState.Added;
                         context.SaveChanges();
@@ -177,7 +201,7 @@ namespace DataLayer
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        return "TransactionFailed";
+                        return "TransactionFailed ad";
                     }
 
                 }
@@ -226,6 +250,28 @@ namespace DataLayer
                     }
                 }
 
+            }
+        }
+        public bool UpdateUserOption(Optiuni _optiune)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        context.Optiunis.Add(_optiune);
+                        context.Entry(_optiune).State = System.Data.Entity.EntityState.Modified;
+                        context.SaveChanges();
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch(Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
             }
         }
         public bool UpdateUserOption(int priority, string specialization)
@@ -339,7 +385,9 @@ namespace DataLayer
         {
             using (var context = new AdmitereLicentaContext())
             {
-                var query = context.Optiunis.OrderBy(n => n.Prioritate).ToList();
+                var query = (from n in context.Optiunis
+                             where n.ID_Candidat == currentUser
+                             select n).ToList<Optiuni>();
                 return query;
             }
         }
@@ -438,6 +486,9 @@ namespace DataLayer
                 return query.ToList();
             }
         }
+
+        //sergiu
+       
     }
 }
 

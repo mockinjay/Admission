@@ -14,7 +14,7 @@ namespace DataLayer.Models
             this.Utilizatoris = new List<Utilizatori>();
         }
 
-        public decimal ID_Candidat { get; set; }
+        public  decimal ID_Candidat { get; set; }
         public string Nume { get; set; }
         public string Prenume { get; set; }
         public Nullable<decimal> CNP { get; set; }
@@ -23,7 +23,7 @@ namespace DataLayer.Models
         public string Oras { get; set; }
         public string Judet { get; set; }
         public Nullable<decimal> Nr_telefon { get; set; }
-        public string Tara { get; set; }
+       // public string Tara { get; set; }
         public string Nationalitate { get; set; }
         public string Religie { get; set; }
         public string Email { get; set; }
