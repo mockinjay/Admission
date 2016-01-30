@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\BussinessLayer.dll.config
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\BussinessLayer.dll
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\BussinessLayer.pdb
@@ -10,3 +11,17 @@ C:\Users\adima\Documents\GitHub\Admission\DataLayer\BussinessLayer\obj\Debug\Bus
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\BussinessLayer\obj\Debug\BussinessLayer.pdb
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\DataLayer.dll
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\DataLayer.pdb
+=======
+C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\BussinessLayer\obj\Debug\BussinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\BussinessLayer.dll.config
+C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\BussinessLayer.dll
+C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\BussinessLayer.pdb
+C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\DataLayer.dll
+C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\EntityFramework.dll
+C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\DataLayer.pdb
+C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\EntityFramework.xml
+C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\BussinessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\BussinessLayer\obj\Debug\BussinessLayer.dll
+C:\Users\Sandel\Documents\GitHub\Admission\DataLayer\BussinessLayer\obj\Debug\BussinessLayer.pdb
+>>>>>>> origin/master

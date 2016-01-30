@@ -14,7 +14,10 @@ namespace DataLayer
         int currentUser;
         public DataTier()
         {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
             currentUser = 4;
         }
 
@@ -142,6 +145,7 @@ namespace DataLayer
             using (var context = new AdmitereLicentaContext())
             {
                 var query = context.Locuri_taxa.Where(n => n.ID_Specializare == specialization).ToList();
+<<<<<<< HEAD
                 return query;
             }
         }
@@ -154,6 +158,8 @@ namespace DataLayer
                              on n.ID_Specializare equals l.ID_Specializare
                              where n.Nume_specializare == specialization
                              select l).FirstOrDefault();
+=======
+>>>>>>> origin/master
                 return query;
             }
         }
@@ -170,7 +176,11 @@ namespace DataLayer
                         var q = (from c in context.Specializaris
                                  where c.Nume_specializare == specializare
                                  select c.ID_Specializare).FirstOrDefault();
+<<<<<<< HEAD
                         if (q == 0)
+=======
+                        if ( q == 0)
+>>>>>>> origin/master
                         {
                             return "NoSpecialization";
                         }
@@ -219,7 +229,11 @@ namespace DataLayer
                 return query;
             }
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> origin/master
         public bool DeleteUserOption(string specializare)
         {
             using (var context = new AdmitereLicentaContext())
@@ -245,6 +259,7 @@ namespace DataLayer
                             return false;
 
 
+<<<<<<< HEAD
                     }
                     catch (Exception ex)
                     {
@@ -281,6 +296,8 @@ namespace DataLayer
                         }
                         else
                             return false;
+=======
+>>>>>>> origin/master
                     }
                     catch (Exception ex)
                     {
@@ -288,7 +305,51 @@ namespace DataLayer
                         return false;
                     }
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
             }
+        }
+        public bool UpdateUserOption(int priority, string specialization)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var query = (from n in context.Candidatis
+                                     join u in context.Optiunis
+                                     on n.ID_Candidat equals u.ID_Candidat
+                                     join x in context.Specializaris
+                                     on u.ID_Specializare equals x.ID_Specializare
+                                     where n.ID_Candidat == currentUser && x.Nume_specializare == specialization
+                                     select u).ToList<Optiuni>().FirstOrDefault();
+                        if (query != null)
+                        {
+                            query.Prioritate = Convert.ToDecimal(priority);
+                            context.Optiunis.Add(query);
+                            context.Entry(query).State = System.Data.Entity.EntityState.Modified;
+                            context.SaveChanges();
+                            transaction.Commit();
+                            return true;
+                        }
+                        else
+                            return false;
+                    }
+                    catch(Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+        
+        public void LogOut()
+        {
+            currentUser = 0;
         }
 
         public void LogOut()
@@ -403,8 +464,13 @@ namespace DataLayer
                         else
                             return "UserExists";
 
+<<<<<<< HEAD
 
 
+=======
+                        
+                        
+>>>>>>> origin/master
 
                     }
                     catch (Exception ex)
@@ -431,6 +497,25 @@ namespace DataLayer
                                      on n.ID_Candidat equals u.ID_Candidat
 
                                      where n.Email == email && u.Parola == oldPass && n.ID_Candidat == currentUser
+<<<<<<< HEAD
+
+
+                                     select u
+                            ).ToList<Utilizatori>().FirstOrDefault();
+                        if (query != null)
+                        {
+                            query.Parola = newPass;
+                            context.Utilizatoris.Add(query);
+                            context.Entry(query).State = System.Data.Entity.EntityState.Modified;
+                            context.SaveChanges();
+                            transaction.Commit();
+                            return true;
+                        }
+                        else
+                            return false;
+
+
+=======
 
 
                                      select u
@@ -457,6 +542,78 @@ namespace DataLayer
                 }
             }
         }
+        public IEnumerable<Candidati>ReadAllOlimpici()
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = from n in context.Candidatis
+                            join u in context.Olimpicis
+                            on n.ID_Candidat equals u.ID_Candidat
+                            select n;
+                return query.ToList<Candidati>();
+            }
+        }
+        public IEnumerable<Rezultate_probe> ReadRezultate(int proba)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                var query = from u in context.Rezultate_probe
+                            where u.ID_Proba == proba
+                            select u;
+
+                query.OrderBy(n => n.ID_Proba).ThenByDescending(n => n.Nota).ToList();
+                return query.ToList<Rezultate_probe>();
+            }
+        }
+
+        public IEnumerable<Rezultate_probe> ReadTestsResult()
+        {
+            using (var contest = new AdmitereLicentaContext())
+            {
+                //var query = (from n in contest.Rezultate_probe
+                //             join p in contest.Probes
+                //             on n.ID_Proba equals p.ID_Proba
+                //             where n.ID_Candidat == currentUser
+                //             select new { p.Nume_Proba, n.Nota }
+                //    ).ToList();
+                var query = contest.Rezultate_probe.Where(n => n.ID_Candidat == currentUser).ToList<Rezultate_probe>();
+                return query;
+            }
+
+        }
+
+        public IEnumerable<Probe> ReadTest()
+        {
+            using (var contest = new AdmitereLicentaContext())
+            {
+                var query = contest.Probes.ToList<Probe>();
+                return query;
+            }
+        }
+        public bool UpdateUserDetails(Candidati temp)
+        {
+            using (var context = new AdmitereLicentaContext())
+            {
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        context.Candidatis.Add(temp);
+                        context.Entry(temp).State = System.Data.Entity.EntityState.Modified;
+                        context.SaveChanges();
+                        transaction.Commit();
+                        return true;
+>>>>>>> origin/master
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+<<<<<<< HEAD
+        }
         public IEnumerable<Olimpici> ReadAllOlimpici()
         {
             using (var context = new AdmitereLicentaContext())
@@ -464,6 +621,9 @@ namespace DataLayer
                 var query = context.Olimpicis;
                 return query.ToList();
             }
+=======
+
+>>>>>>> origin/master
         }
     }
 }

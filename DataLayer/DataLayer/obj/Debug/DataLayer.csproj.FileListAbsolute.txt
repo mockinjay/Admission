@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\DataLayer.dll.config
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\DataLayer.dll
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\DataLayer.pdb
@@ -8,3 +9,25 @@ C:\Users\adima\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\EntityFr
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\DataLayer\obj\Debug\DataLayer.dll
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\DataLayer\obj\Debug\DataLayer.pdb
 C:\Users\adima\Documents\GitHub\Admission\DataLayer\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+=======
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\DataLayer.dll.config
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\DataLayer.dll
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\DataLayer.pdb
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\EntityFramework.dll
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\EntityFramework.xml
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\DataLayer\obj\Debug\DataLayer.dll
+C:\Users\casian\Documents\GitHub\Admission\DataLayer\DataLayer\obj\Debug\DataLayer.pdb
+C:\Users\Sergiu\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\DataLayer.dll.config
+C:\Users\Sergiu\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\DataLayer.dll
+C:\Users\Sergiu\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\DataLayer.pdb
+C:\Users\Sergiu\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\EntityFramework.dll
+C:\Users\Sergiu\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sergiu\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\EntityFramework.xml
+C:\Users\Sergiu\Documents\GitHub\Admission\DataLayer\DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sergiu\Documents\GitHub\Admission\DataLayer\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+C:\Users\Sergiu\Documents\GitHub\Admission\DataLayer\DataLayer\obj\Debug\DataLayer.dll
+C:\Users\Sergiu\Documents\GitHub\Admission\DataLayer\DataLayer\obj\Debug\DataLayer.pdb
+>>>>>>> origin/master
